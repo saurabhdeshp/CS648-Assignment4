@@ -38,9 +38,7 @@ const addProduct = async (_, product ) => {
   productInsert.id = await uidForDocument(PRODUCTS);
   console.log(productInsert, product)
   const result = await db.collection(PRODUCTS).insertOne(productInsert);
-  return db
-    .collection(PRODUCTS)
-    .findOne({ _id: result.insertedId });
+  return db.collection(PRODUCTS).findOne({ _id: result.insertedId });
 };
 
 const connectToDb = async () => {
