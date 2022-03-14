@@ -11,12 +11,11 @@
 /* eslint no-restricted-globals: "off" */
 
 db.products.deleteMany({});
-const count = db.products.countDocuments();
-print('Inserted total of ', count, 'products');
+const itemCount = db.products.countDocuments();
+print('Inserted ', itemCount, 'products');
 
 db.counters.deleteOne({ _id: 'products' });
-db.counters.insertOne({ _id: 'products', sequenceNum: count });
-
+db.counters.insertOne({ _id: 'products', sequenceNum: itemCount });
 db.products.createIndex({ id: 1 }, { unique: true });
 db.products.createIndex({ name: 1 });
 db.products.createIndex({ price: 1 });
